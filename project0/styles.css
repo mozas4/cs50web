@@ -1,0 +1,38 @@
+form {
+    text-align: center;
+}
+a {
+    margin: 3px;
+}
+.t {
+    margin: 7px;
+    border-radius: 15px;
+    padding: 20px; 
+    width: 200px;
+    height: 0px;
+}
+
+.b_s, .b_i{
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    color: #3c4043;
+    font-family: arial,sans-serif;
+    font-size: 14px;
+    margin: 11px 4px;
+    padding: 0 16px;
+    line-height: 27px;
+    height: 36px;
+    min-width: 54px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.b {
+    box-shadow: none;
+    background-color: #4d90fe;
+    background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed);
+    border: 1px solid #3079ed;
+    color: #fff;
+}
