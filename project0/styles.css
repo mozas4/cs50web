@@ -3,12 +3,15 @@ form {
 }
 a {
     margin: 3px;
+    text-align: right;
+    float: right;
 }
 .t {
     margin: 7px;
     border-radius: 15px;
+    text-align: center;
     padding: 20px; 
-    width: 200px;
+    width: 300px;
     height: 0px;
 }
 
@@ -35,4 +38,13 @@ a {
     background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed);
     border: 1px solid #3079ed;
     color: #fff;
+}
+.t_a {
+    border-radius: 1px;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    font-size: 13px;
+    height: 25px;
+    margin: 7px;
+    padding: 1px 8px;
 }
