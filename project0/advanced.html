@@ -7,27 +7,32 @@
     <body>
         <a href="index.html">Google search</a>
         <br>
-        <form action="https://www.google.com/advanced_search">
+        <form action="https://www.google.com/search" name="f">
             <div>
                 <div>
+                    <!--1-->
                     <label>all these words:</label>  
                     <input class="t_a" type="text" name="as_q">  
                 </div>
                 <div>
+                    <!--2-->
                     <label>exact word or phrase:</label> 
-                    <input class="t_a" type="text" name="as_epq" id="CwYCWc">
+                    <input class="t_a" value id="CwYCWc" name="as_epq" type="text">
                 </div>
                 <div>
+                    <!--3-->
                     <label>of these words:</label>
                     <input class="t_a" type="text" name="as_oq">
                 </div>
                 <div>
+                    <!--4-->
                     <label>of these words:</label>
                     <input class="t_a" type="text" name="as_eq">
                 </div>    
             </div>
             <div>
-                <input class="b" style="-webkit-user-select:none;user-select:none;line-height:100%;height:30px;min-width:120px" value="advanced search" type="submit">
+                <input class="b" style="-webkit-user-select:none;user-select:none;
+                line-height:100%;height:30px;min-width:120px" value="advanced search" type="submit">
             </div>
         </form>
     </body>
