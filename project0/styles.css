@@ -7,9 +7,18 @@ a {
     float: right;
 }
 .t {
-    margin: 7px;
-    border-radius: 15px;
-    text-align: center;
+    margin-top: 20px;
+    margin-left: 90px;
+    border-radius: 20px;
+    padding: 20px; 
+    width: 250px;
+    height: 0px;
+}
+
+.t_g {
+    margin-top: 20px;
+    margin-left: 200px;
+    border-radius: 20px;
     padding: 20px; 
     width: 300px;
     height: 0px;
