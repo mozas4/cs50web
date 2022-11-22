@@ -47,6 +47,7 @@ a {
     background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed);
     border: 1px solid #3079ed;
     color: #fff;
+    margin-top: 10px;
 }
 .t_a {
     border-radius: 1px;
@@ -54,6 +55,32 @@ a {
     border-top: 1px solid #c0c0c0;
     font-size: 13px;
     height: 25px;
-    margin: 7px;
+    margin-top: 7px;
     padding: 1px 8px;
+}
+
+.t_a1 {
+    border-radius: 1px;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    font-size: 13px;
+    height: 25px;
+    margin-top: 7px;
+    padding: 1px 8px;
+}
+
+.al_1 {
+    margin-right: 18px;
+}
+
+.al_2 {
+    margin-right: 77px;
+}
+
+.al_4 {
+    margin-right: 80px;
+}
+
+.al_3 {
+    margin-right: 100px;
 }
