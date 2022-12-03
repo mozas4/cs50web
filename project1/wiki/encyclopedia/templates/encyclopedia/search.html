@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %}
+{% block title %}
+    search
+{% endblock %}
+
+{% block body %}
+    {% if entries %}
+        <h3>We canot find your search, here is something similar to the search :</h3>
+
+        <ul>
+            {% for entry in entries %}
+                <li><a href="/wiki/{{entry}}" >{{ entry }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>we canot find your search</h3>
+    {% endif %}
+{% endblock %}
