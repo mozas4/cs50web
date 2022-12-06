@@ -54,6 +54,9 @@ def search(request):
         })
 
 def new(request):
+    '''
+    creat new entry
+    '''
     if request.method == "POST":
         L = []
         name = request.POST["n"]
@@ -68,7 +71,11 @@ def new(request):
         if name.lower() in L:
             return entry(request, name.capitalize())
         else:
-            return HttpResponse("t")
+            # creat new file
+            path = r'C:\Users\moshe\Desktop\cswab\cs50web\project1\wiki\entries\{}.md'.format(name)
+            with open(path, 'w+') as f:
+                f.write(data)
+            return entry(request, name.capitalize())
 
     else:
         return render(request, "encyclopedia/new_entry.html", {
