@@ -30,7 +30,7 @@ def search(request):
     if request.method == "POST":
         q = request.POST["q"]
         entry = util.get_entry(q)
-        # if search dont found
+        # if search don't found
         if entry == None:
             L = []
             list_name = util.list_entries()
@@ -47,9 +47,29 @@ def search(request):
             html_entry = markdown2.markdown(entry)
             
             return render(request, "encyclopedia/entry.html", {
-            'entry' : html_entry , 'title' : q
+            'entry' : html_entry , 'title' : q.capitalize()
             })
     else:
         return render(request, "encyclopedia/search.html", {
         })
 
+def new(request):
+    if request.method == "POST":
+        L = []
+        name = request.POST["n"]
+        data = request.POST["d"]
+
+        # change entry names to lower and add them to new list name L
+        L_emtries = util.list_entries()
+        for i in L_emtries:
+            L.append(i.lower())
+    
+        # if name is allready exists
+        if name.lower() in L:
+            return entry(request, name.capitalize())
+        else:
+            return HttpResponse("t")
+
+    else:
+        return render(request, "encyclopedia/new_entry.html", {
+    })

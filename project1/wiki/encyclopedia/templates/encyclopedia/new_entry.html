@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+{% block title %}
+    new dictioary 
+{% endblock %}
+
+{% block body %}
+    <form method="post" action="{% url 'new' %}">
+        {% csrf_token %}
+        <div>
+            <input class="entry_name" type="text" name="n" placeholder="entry name">
+        </div>
+        <div>
+            <p></p>
+            <label>entry informtion</label>
+            <textarea class="data" name="d" rows="2" cols="5">
+            </textarea>
+        </div>
+        <div>
+            <button class="b" type="submit" >submit</button>
+        </div>
+    </form>
+{% endblock %}
