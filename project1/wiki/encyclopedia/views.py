@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse 
 from . import util
+import random
 import markdown2
 
 
@@ -36,8 +37,6 @@ def search(request):
             list_name = util.list_entries()
             for i in list_name:
                 if q.lower() in i.lower():
-                    print(type(q))
-                    print(type(i))
                     L.append(i)
             return render(request, "encyclopedia/search.html", {
                 "entries": L
@@ -63,8 +62,8 @@ def new(request):
         data = request.POST["d"]
 
         # change entry names to lower and add them to new list name L
-        L_emtries = util.list_entries()
-        for i in L_emtries:
+        L_entries = util.list_entries()
+        for i in L_entries:
             L.append(i.lower())
     
         # if name is allready exists
@@ -80,3 +79,33 @@ def new(request):
     else:
         return render(request, "encyclopedia/new_entry.html", {
     })
+
+def random_page(request):
+    '''
+    render a random page
+    '''
+    L = []
+    L_entries = util.list_entries()
+    for i in L_entries:
+        L.append(i)
+    e = random.choice(L)
+
+    entry = util.get_entry(e)
+    html_entry = markdown2.markdown(entry)
+
+    return render(request, "encyclopedia/entry.html", {
+        'entry' : html_entry , 'title' : e
+    })
+
+def edit(request):
+    '''
+    edit page 
+    '''
+    if request.method == 'POST':
+        pass
+    else:
+        x = request.host_url
+        print(x)
+        return render(request, "encyclopedia/edit.html", {
+
+        })
