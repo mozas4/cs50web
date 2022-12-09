@@ -97,10 +97,6 @@ def random_page(request):
         'entry' : html_entry , 'title' : e
     })
 
-def edit(request):
-    '''
-    edit page 
-    '''
 
 def edit(request):
     '''
