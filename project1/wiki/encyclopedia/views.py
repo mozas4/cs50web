@@ -71,7 +71,7 @@ def new(request):
             return entry(request, name.capitalize())
         else:
             # creat new file
-            path = r'C:\Users\moshe\Desktop\cswab\cs50web\project1\wiki\entries\{}.md'.format(name)
+            path = r'C:\Users\moshe\Desktop\cswab\cs50web\project1\wiki\entries\{}.md'.format(name.upper())
             with open(path, 'w+') as f:
                 f.write(data)
             return entry(request, name.capitalize())
@@ -101,11 +101,23 @@ def edit(request):
     '''
     edit page 
     '''
-    if request.method == 'POST':
-        pass
-    else:
-        x = request.host_url
-        print(x)
-        return render(request, "encyclopedia/edit.html", {
 
+def edit(request):
+
+    name = 't'
+    path = r'C:\Users\moshe\Desktop\cswab\cs50web\project1\wiki\entries\{}.md'.format(name)
+    if request.method == 'POST':
+        data = request.POST["d"]
+        # write to file
+        with open(path, 'w') as f:
+            f.write(data)
+        return entry(request, name.capitalize())
+    else:
+        # read file.md
+        with open(path, 'r') as f:
+            lines = f.read()
+        # generat web page
+        return render(request, "encyclopedia/edit.html", {
+            'file' : lines, 'title' : name
         })
+
