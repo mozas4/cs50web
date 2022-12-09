@@ -4,7 +4,7 @@
 
 {% block body %}
         {{entry|safe}}
-        <form action="{% url 'edit' %}" method="post">
+        <form action="{% url 'edit' %}" method="get">
                 {% csrf_token %}
                 <input type="hidden" name = "entry_type" value= "{{title}}">
                 <input type="submit" value="Edit" class="submit">

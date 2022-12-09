@@ -103,21 +103,20 @@ def edit(request):
     '''
 
 def edit(request):
-
-    name = 't'
-    path = r'C:\Users\moshe\Desktop\cswab\cs50web\project1\wiki\entries\{}.md'.format(name)
+    '''
+    edit 
+    '''
     if request.method == 'POST':
+        title = request.POST["entry_type_edit"]
         data = request.POST["d"]
-        # write to file
-        with open(path, 'w') as f:
-            f.write(data)
-        return entry(request, name.capitalize())
+        util.save_entry(title, data)
+        return entry(request, title.capitalize())
     else:
-        # read file.md
-        with open(path, 'r') as f:
-            lines = f.read()
+        name = request.GET['entry_type']
+        # get the entry file
+        content = util.get_entry(name)
         # generat web page
         return render(request, "encyclopedia/edit.html", {
-            'file' : lines, 'title' : name
+            'file' : content, 'title' : name
         })
 
