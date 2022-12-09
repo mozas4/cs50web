@@ -4,6 +4,10 @@
 
 {% block body %}
         {{entry|safe}}
-        <a href="{% url 'edit' %}">edit entry</a>
+        <form action="{% url 'edit' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name = "entry_type" value= "{{title}}">
+                <input type="submit" value="Edit" class="submit">
+        </form>
 
 {% endblock %}
