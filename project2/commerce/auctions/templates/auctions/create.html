@@ -3,6 +3,8 @@
 {% block body %}
     <form action="{% url 'create' %}" method="post">
         {% csrf_token %}
+        <input type="hidden" name="user" value="{{ user.username }}"> 
+        
         <div class="form-group">
             <input autofocus class="form-control" type="text" name="title" placeholder="title">
         </div>

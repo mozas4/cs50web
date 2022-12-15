@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import User
+from .models import User, Listing
 
 
 def index(request):
@@ -66,9 +66,15 @@ def create(request):
     if request.method == 'POST':
        title = request.POST["title"]
        des = request.POST["description"]
-       bid = request.POST["bid"]
+       bid = int(request.POST["bid"])
        url = request.POST["url"]
        category = request.POST["category"]
+       u = request.POST["user"]
+       user = User.objects.filter(username=u).first()
+
+       # need to add owner to Listing
+       apple = Listing(owner=user, title=title, des=des, bid=bid, url=url, category=category)
+       apple.save()
 
 
        return HttpResponseRedirect(reverse("index"))
