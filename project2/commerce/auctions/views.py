@@ -8,7 +8,12 @@ from .models import User, Listing
 
 
 def index(request):
-    return render(request, "auctions/index.html")
+    # get all the data from model Listing
+    L = Listing.objects.all()
+
+    return render(request, "auctions/index.html", {
+        "auctions" : L 
+    })
 
 
 def login_view(request):
@@ -63,6 +68,9 @@ def register(request):
         return render(request, "auctions/register.html")
 
 def create(request):
+    '''
+    create new Listing
+    '''
     if request.method == 'POST':
        title = request.POST["title"]
        des = request.POST["description"]
@@ -72,11 +80,21 @@ def create(request):
        u = request.POST["user"]
        user = User.objects.filter(username=u).first()
 
-       # need to add owner to Listing
-       apple = Listing(owner=user, title=title, des=des, bid=bid, url=url, category=category)
-       apple.save()
-
+       # add listing to data!
+       L = Listing(owner=user, title=title, des=des, bid=bid, url=url, category=category)
+       L.save()
 
        return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, 'auctions/create.html')
+
+def product(request, name):
+    if request.method == 'POST':
+        return HttpResponse("tdgf")
+    else:
+        # להבין איך להוסיף משתמש 
+        user = User.objects.filter(username="moshe4631").first()
+        product = Listing.objects.filter(title=name, owner=user)
+        return render(request, 'auctions/Listing.html', {
+            "product" : product
+        })

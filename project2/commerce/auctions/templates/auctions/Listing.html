@@ -1,0 +1,23 @@
+{% extends "auctions/layout.html" %}
+{% block body %}
+    {% for p in product %}
+        <div>
+            Listing: <b>{{ p.title }}</b>
+        </div>
+        <div>
+            <img src="{{p.url}}">
+        </div>
+        <div>
+            {{p.des}}
+        </div>
+        <div>
+            ${{p.bid}}
+        </div>
+        <!--url לסדר-->
+        <form action="{% url 'product'%}"></form>
+            {% csrf_token %}
+            <input class="btn btn-primary" type="submit" value="create">
+        </form>
+
+    {% endfor %}
+{% endblock %}
