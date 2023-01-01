@@ -3,9 +3,11 @@
 {% block body %}
     <h2>Active Listings</h2>
     {% for auction in auctions %}
-        <img src="{{auction.url}}">
+        {% if auction.url %}
+            <img src="{{auction.url}}">
+        {% endif %}
         <div>
-            <a href='/{{auction.title}}'>{{auction.title}}</a>
+            <a href='/{{auction.title}}.{{auction.owner}}'>{{auction.title}}</a>
         </div>
         <div>
             <b>price</b>: ${{auction.bid}}

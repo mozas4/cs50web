@@ -14,9 +14,13 @@
             ${{p.bid}}
         </div>
         <!--url לסדר-->
-        <form action="{% url 'product'%}"></form>
+        <!-- {% url 'product' name=p.title %} -->
+        <form action="{% url 'product' name=p.title %}" method="post">
             {% csrf_token %}
-            <input class="btn btn-primary" type="submit" value="create">
+            <div class="form-group">
+                <input class="form-control" type="number" name="bid" placeholder="bid" style=>
+            </div>
+            <input class="btn btn-primary" type="submit" value="buy">
         </form>
 
     {% endfor %}

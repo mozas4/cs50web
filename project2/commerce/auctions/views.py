@@ -92,9 +92,11 @@ def product(request, name):
     if request.method == 'POST':
         return HttpResponse("tdgf")
     else:
-        # להבין איך להוסיף משתמש 
-        user = User.objects.filter(username="moshe4631").first()
-        product = Listing.objects.filter(title=name, owner=user)
+
+        t_o = name.split(".")
+        print(t_o)
+        user = User.objects.filter(username=t_o[1]).first()
+        product = Listing.objects.filter(title=t_o[0], owner=user)
         return render(request, 'auctions/Listing.html', {
             "product" : product
         })
