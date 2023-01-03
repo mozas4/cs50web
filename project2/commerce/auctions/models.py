@@ -15,3 +15,5 @@ class Listing(models.Model):
 
     def __str__(self):
         return f"listing of {self.title} belongs to {self.owner}"
+
+

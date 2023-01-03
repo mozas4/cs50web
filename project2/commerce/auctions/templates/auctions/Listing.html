@@ -13,15 +13,21 @@
         <div>
             ${{p.bid}}
         </div>
-        <!--url לסדר-->
+
         <!-- {% url 'product' name=p.title %} -->
-        <form action="{% url 'product' name=p.title %}" method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <input class="form-control" type="number" name="bid" placeholder="bid" style=>
-            </div>
-            <input class="btn btn-primary" type="submit" value="buy">
-        </form>
+        {% if owner %}
+            <!-- need to complete Complete-->
+            <input class="btn btn-primary" type="submit" value="sell">
+        {% else %}
+            <form action="{% url 'product' name=p.title %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input class="form-control" type="number" name="bid" placeholder="bid" style=>
+                </div>
+                <input class="btn btn-primary" type="submit" value="buy">
+            </form>
+        {% endif %}
+
 
     {% endfor %}
 {% endblock %}
