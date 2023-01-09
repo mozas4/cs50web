@@ -16,13 +16,17 @@
 
         <!-- {% url 'product' name=p.title %} -->
         {% if owner %}
-            <!-- need to complete Complete-->
+            <!-- need to complete-->
             <input class="btn btn-primary" type="submit" value="sell">
         {% else %}
             <form action="{% url 'product' name=p.title %}" method="post">
                 {% csrf_token %}
+                <!--hidden-->
+                <input type="hidden" name="last_bid" value="{{p.bid}}"> 
+                <input type="hidden" name="owner" value="{{p.owner}}"> 
+                
                 <div class="form-group">
-                    <input class="form-control" type="number" name="bid" placeholder="bid" style=>
+                    <input class="form-control" type="number" name="bid" placeholder="bid">
                 </div>
                 <input class="btn btn-primary" type="submit" value="buy">
             </form>
