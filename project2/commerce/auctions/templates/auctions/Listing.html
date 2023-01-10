@@ -13,15 +13,32 @@
         <div>
             ${{p.bid}}
         </div>
-        <!--url לסדר-->
+        <div>
+            {% if buyer %}
+                <b>{{p.last_bid}}</b> is the one who suggested the biggest bid  
+            {% else %}
+                <b>{{p.last_bid}} bid </b>
+            {% endif %}
+        </div>
+
         <!-- {% url 'product' name=p.title %} -->
-        <form action="{% url 'product' name=p.title %}" method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <input class="form-control" type="number" name="bid" placeholder="bid" style=>
-            </div>
-            <input class="btn btn-primary" type="submit" value="buy">
-        </form>
+        {% if owner %}
+            <!-- need to complete-->
+            <input class="btn btn-primary" type="submit" value="sell">
+        {% else %}
+            <form action="{% url 'product' name=p.title %}" method="post">
+                {% csrf_token %}
+                <!--hidden-->
+                <input type="hidden" name="last_bid" value="{{p.bid}}"> 
+                <input type="hidden" name="owner" value="{{p.owner}}"> 
+                
+                <div class="form-group">
+                    <input class="form-control" type="number" name="bid" placeholder="bid">
+                </div>
+                <input class="btn btn-primary" type="submit" value="buy">
+            </form>
+        {% endif %}
+
 
     {% endfor %}
 {% endblock %}

@@ -11,7 +11,10 @@ class Listing(models.Model):
     des = models.TextField()
     bid = models.IntegerField(default=0)
     url = models.CharField(max_length=64)
-    category = models.CharField(max_length=10) 
+    category = models.CharField(max_length=10)
+    last_bid = models.CharField(max_length=64, default="No one offered")
 
     def __str__(self):
         return f"listing of {self.title} belongs to {self.owner}"
+
+
