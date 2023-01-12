@@ -93,13 +93,14 @@ def product(request, name):
         # get bids 
         bid = int(request.POST["bid"])
         last_bid = int(request.POST["last_bid"])
+        username_p = request.POST["username"]
         # if curent bid bigger than the last bid
         if bid > last_bid:
             o = (request.POST["owner"])
             # get user
             user = User.objects.filter(username=o).first()
             # change bid 
-            Listing.objects.filter(title=name, owner=user).update(bid=bid, last_bid='moshe4631') # צריך להוסיף שינוי של מי שקנה אחרון (צריך את בעל החשבון)
+            Listing.objects.filter(title=name, owner=user).update(bid=bid, last_bid=username_p)
             return HttpResponse("You offered the highest price")
         else:
             return HttpResponse("your bid is smaller or equal the curent bid")
@@ -113,8 +114,10 @@ def product(request, name):
         product = Listing.objects.filter(title=t_o[0], owner=user)
         '''
         get the owner of the product
+        username_g 
         for i in product:
-           owner = i.owner
+            if i.owner == username_g:
+                owner = True
         '''
         # check if someone buy, if so buyer = True
         for i in product:
